@@ -1,0 +1,6 @@
+4. Lấy toàn bộ bài viết của 1 website (3 nhóm)
+a. Input là link website (trang chủ hoặc trang danh mục) và số lượng bài viết cần lấy (Xếp giảm dần theo ngày đăng, lấy bài viết từ mới tới cũ)
+b. Có tùy chọn lấy hình hay không
+c. Output là
+- file XML có những thông tin bao gồm nội dung bài viết chi tiết
+- Tùy chọn insert Database
