@@ -15,33 +15,3 @@
 		</posttime>
 	</subject>
 </website>
-
-public function export($value){
-	header('Content-Type: application/octet-stream');
-	header("Content-Transfer-Encoding: Binary");
-	header("Content-disposition: attachment; filename=XML_downloader.xml");
-	$i=0;
-	print "\r\n"."<?xml version='1.0' encoding='utf-8'?>";
-	print "\r\n"."<website>";
-	foreach($value as $key)
-	{
-		print "\r\n"."<subject id=".++$i.">";
-			print "\r\n\t"."<url>";
-				print "\r\n\t\t".$key['url'];
-			print "\r\n\t"."</url>";
-			
-			print "\r\n\t<title>";
-				print "\r\n\t\t".$key['title'];
-			print "\r\n\t"."</title>";
-			
-			print "\r\n\t<content>";
-				print "\r\n\t\t".$key['content'];
-			print "\r\n\t"."</content>";
-			
-			print "\r\n\t<posttime>";
-				print "\r\n\t\t".$key['posttime'];
-			print "\r\n\t"."</posttime>";
-		print "\r\n"."</subject>";
-	}
-	print "\r\n"."</website>";
-}

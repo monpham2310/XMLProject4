@@ -73,31 +73,41 @@
             if($type == "xml"){
                 header('Content-Type: application/octet-stream');
                 header("Content-Transfer-Encoding: Binary");
-                header("Content-disposition: attachment; filename=myXML.xml");
-                print("<?xml version=1.0 ?>");
-                print("<root>");
+                header("Content-disposition: attachment; filename=XML_downloader.xml");
+                $i=0;
+                print "\r\n"."<?xml version='1.0' encoding='utf-8'?>";
+                print "\r\n"."<website>";
                 foreach($ResultArr as $key)
                 {
-                    print "\r\n"."<article id=".++$i.">";
-                    
-                        print "\r\n\t"."<title>";
+                    print "\r\n"."<subject id=".++$i.">";
+                        print "\r\n\t"."<url>";
+                            print "\r\n\t\t".$key['url'];
+                        print "\r\n\t"."</url>";
+
+                        print "\r\n\t<title>";
                             print "\r\n\t\t".$key['title'];
                         print "\r\n\t"."</title>";
 
-                        print "\r\n\t"."<url>";
-                            print "\r\n\t\t".$key['link'];
-                        print "\r\n\t"."</url>";
-
-                        print "\r\n\t"."<content>";
+                        print "\r\n\t<content>";
                             print "\r\n\t\t".$key['content'];
                         print "\r\n\t"."</content>";
-                    
-                    print "\r\n"."</article>";
+
+                        print "\r\n\t<posttime>";
+                            print "\r\n\t\t".$key['posttime'];
+                        print "\r\n\t"."</posttime>";
+                    print "\r\n"."</subject>";
                 }
-                print("</root>");
+                print "\r\n"."</website>";
             }
             else if($type == "insertdb"){
-                /*Thực hiện insert database ở đây*/
+                $this->load->model('ArticleModel');
+                $query = $this->ArticleModel->insert($ResultArr);
+                if($query){
+                    echo '<script>alert("Success!!");</script>';
+                }
+                else{
+                    echo '<script>alert("Fail!!");</script>';
+                }
             }
         }
     }

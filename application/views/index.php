@@ -30,7 +30,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">Binary admin</a>
             </div>
-<!--
+            <!--
             <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
@@ -44,19 +44,17 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="login.html" class="
                     <li class="text-center">
                         <img src="<?php echo base_url(); ?>assets/img/find_user.png" class="user-image img-responsive" />
                     </li>
-
-
                     <li>
-                        <a class="active-menu" href="<?php echo base_url(""); ?>"><i class="fa fa-dashboard fa-3x"></i> Form nhập liệu</a>
+                        <a href="<?php echo base_url(" "); ?>"><i class="fa fa-dashboard fa-3x"></i> Form nhập liệu</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url("htmlcontroller/member"); ?>"><i class="fa fa-desktop fa-3x"></i> Thông tin thành viên</a>
+                        <a href="<?php echo base_url("htmlcontroller/member "); ?>"><i class="fa fa-desktop fa-3x"></i> Thông tin thành viên</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url("htmlcontroller/teacher"); ?>"><i class="fa fa-qrcode fa-3x"></i> Yêu cầu đề tài</a>
+                        <a href="<?php echo base_url("htmlcontroller/teacher "); ?>"><i class="fa fa-qrcode fa-3x"></i> Yêu cầu đề tài</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url("htmlcontroller/document"); ?>"><i class="fa fa-bar-chart-o fa-3x"></i> Tài liệu tham khảo</a>
+                        <a href="<?php echo base_url("htmlcontroller/document "); ?>"><i class="fa fa-bar-chart-o fa-3x"></i> Tài liệu tham khảo</a>
                     </li>
                 </ul>
 
