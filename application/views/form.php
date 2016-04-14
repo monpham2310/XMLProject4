@@ -7,7 +7,7 @@
                     <div class="form-horizontal">
                         <fieldset style="font-family:Tahoma">
                             <legend style="font-weight:bold; text-align:center;font-size:30px">Lấy toàn bộ bài viết của 1 website</legend>
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:10px">
                                 <div class="col-md-12">
                                     <div class="editor-label">
                                         <label>Link website: <font style="color:red; margin-left:3px">(*)</font></label>
@@ -16,7 +16,7 @@
                                         <input id="txtUrl" type="text" class="form-control" />
                                         <b id="warningtxtUrl"></b>
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                             <div class="col-md-12" style="margin-bottom:10px">
                                 <div class="col-md-6">
@@ -61,6 +61,29 @@
                                         <b id="warningtxtContent"></b>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <div class="col-md-6">
+                                    <div class="editor-label">
+                                        <br/>
+                                        <label>Tag chứa thời gian post: <font style="color:red; margin-left:3px">(*)</font></label>
+                                    </div>
+                                    <div class="editor-field">
+                                        <input id="txtTagPost" type="text" class="form-control" />
+                                        <b id="warningtxtTagPost"></b>
+                                    </div>
+                                </div>
+<!--
+                                <div class="col-md-6">
+                                    <div class="editor-label">
+                                        <br/>
+                                        <label>Thuộc tính chứa thời gian post: </label>
+                                    </div>
+                                    <div class="editor-field">
+                                        <input id="txtTagAttr" type="text" class="form-control" />                                      
+                                    </div>
+                                </div>
+-->
                             </div>
                             <div class="col-md-12" style="margin-bottom:10px">
                                 <div class="col-md-6">
