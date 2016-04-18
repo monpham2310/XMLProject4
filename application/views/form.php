@@ -7,7 +7,7 @@
                     <div class="form-horizontal">
                         <fieldset style="font-family:Tahoma">
                             <legend style="font-weight:bold; text-align:center;font-size:30px">Lấy toàn bộ bài viết của 1 website</legend>
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-bottom:10px">
                                 <div class="col-md-12">
                                     <div class="editor-label">
                                         <label>Link website: <font style="color:red; margin-left:3px">(*)</font></label>
@@ -16,6 +16,22 @@
                                         <input id="txtUrl" type="text" class="form-control" />
                                         <b id="warningtxtUrl"></b>
                                     </div>
+                                </div>                                
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <div class="col-md-12">
+                                    <div class="editor-label">
+                                        <label>Nhập tag chứa danh mục: <font style="color:red; margin-left:3px">(*)</font></label>
+                                    </div>
+                                    <div class="editor-field">
+                                        <input id="txtCate" type="text" class="form-control" />
+                                        <b id="warningtxtCate"></b>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="col-lg-12" style="text-align:center">
+                                    <button class="btn btn-primary" onclick="getCate('<?php echo base_url('htmlcontroller/getListCategory'); ?>')">Tìm danh mục</button>
                                 </div>
                             </div>
                             <div class="col-md-12" style="margin-bottom:10px">
@@ -66,12 +82,35 @@
                                 <div class="col-md-6">
                                     <div class="editor-label">
                                         <br/>
+                                        <label>Tag chứa thời gian post: <font style="color:red; margin-left:3px">(*)</font></label>
+                                    </div>
+                                    <div class="editor-field">
+                                        <input id="txtTagPost" type="text" class="form-control" />
+                                        <b id="warningtxtTagPost"></b>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="editor-label">
+                                        <br/>
+                                        <label>Chọn danh mục bài viết muốn lấy: </label>
+                                    </div>
+                                    <div class="editor-field" id="selectCate">
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <div class="col-md-6">
+                                    <div class="editor-label">
+                                        <br/>
                                         <label>Sắp xếp:</label>
                                     </div>
                                     <div class="editor-field">
                                         <select id="sort" class="form-control">
-                                            <option value="asc">Tăng dần</option>
-                                            <option value="desc">Giảm dần</option>
+                                            <option value="desc">Tăng dần</option>
+                                            <option value="asc">Giảm dần</option>
                                         </select>
                                     </div>
                                 </div>
@@ -92,7 +131,7 @@
                             <div class="col-md-12">
                                 <div class="col-md-12" style="text-align:center">
                                     <p>
-                                        <input class="btn btn-success" type="button" value="Thực hiện" onclick="handleClick('<?php echo base_url("htmlcontroller/check_search "); ?>','search')"/>
+                                        <input class="btn btn-success" type="button" value="Thực hiện" onclick="handleClick('<?php echo base_url("htmlcontroller/check_search "); ?>')"/>
                                     </p>
                                 </div>
                             </div>

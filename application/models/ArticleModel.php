@@ -10,10 +10,10 @@
             $checkTrue = true;
             foreach($data as $value){
                 $dataArr = array(
-                    'url'       => $data['url'],
-                    'title'     => $data['title'],
-                    'content'   => $data['content'],
-                    'posttime'  => $data['posttime']
+                    'url'       => $value['link'],
+                    'title'     => $value['title'],
+                    'content'   => $value['content'],
+                    'posttime'  => $value['datePost']
                 );
                 $query = $this->db->insert('article',$dataArr);
                 if($query == null){
