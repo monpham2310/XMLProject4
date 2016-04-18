@@ -1,4 +1,4 @@
-function handleClick(controller,kind){
+function handleClick(controller){
     var opts = {
         lines: 12, // The number of lines to draw
         length: 7, // The length of each line
@@ -13,7 +13,9 @@ function handleClick(controller,kind){
     var target = document.getElementById('loading');
     var spinner = new Spinner(opts).spin(target);
     
-    var txtUrl = $('#txtUrl').val();    
+    var txtUrl = $('#txtUrl').val();
+    var txtTagCate = $('#_cate').val();
+    alert(txtTagCate);
     var numberArticle = $('#txtNumberArticle').val();
     var txtTagLink = $('#txtTagLink').val();
     var txtTitle = $('#txtTitle').val();
@@ -22,13 +24,13 @@ function handleClick(controller,kind){
     var txtTagAttr = $('#txtTagAttr').val();
     var sort = $('#sort').val();
     var img = $('#getImg').val();
-    
-    if(txtUrl != ""){
-        $('#warningtxtUrl').html("");
-    }
-    else if(txtUrl == ""){
-        $('#warningtxtUrl').html("Vui lòng nhập link website!!!!");
-    }
+//    
+//    if(txtUrl != ""){
+//        $('#warningtxtUrl').html("");
+//    }
+//    else if(txtUrl == ""){
+//        $('#warningtxtUrl').html("Vui lòng nhập link website!!!!");
+//    }
             
     if(numberArticle != ""){
         $('#warningtxtNumberArticle').html("");
@@ -55,7 +57,7 @@ function handleClick(controller,kind){
     }
     else $('#warningtxtTagPost').html("Vui lòng nhập tag chứa thời gian post!!!");
     
-    if (txtUrl !== "" && numberArticle != "" && txtTagLink !== "" && txtTitle !== "" && txtContent !== "" && txtTagPost != "") {
+    if (numberArticle != "" && txtTagLink !== "" && txtTitle !== "" && txtContent !== "" && txtTagPost != "") {
         $("#loading").fadeIn();
         var opts = {
             lines: 12, // The number of lines to draw
@@ -73,6 +75,7 @@ function handleClick(controller,kind){
         var data = {
             txtUrl: txtUrl,            
             numberArticle: numberArticle,
+            txtTagCate: txtTagCate,
             txtTagLink: txtTagLink,
             txtTitle: txtTitle,
             txtContent: txtContent,
@@ -96,4 +99,22 @@ function handleClick(controller,kind){
             }
         });
     }
+}
+function getCate(controller){
+    var txtUrl = $('#txtUrl').val();
+    var txtCate = $('#txtCate').val();
+    var data = { 
+        txtUrl: txtUrl,
+        tagCate: txtCate
+    };   
+    var dt = JSON.stringify(data);
+    $.ajax({
+        type: 'POST',
+        url: controller,
+        data: 'data=' + dt,
+        success: function(response){
+            $('#selectCate').append(response);
+            //alert(response);
+        }
+    });
 }

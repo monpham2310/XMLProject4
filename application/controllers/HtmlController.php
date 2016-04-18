@@ -1,6 +1,6 @@
 <?php
     class HtmlController extends CI_Controller{
-       
+
         public function __construct(){
             parent::__construct();
             $this->load->helper("url");
@@ -29,6 +29,27 @@
             $this->load->view("index.php",$data);
         }
         
+        public function getListCate(){
+            $result = json_decode($this->input->post('data'), true);  
+            $list = array();
+            $i = 0;
+            $html = $this->domparser->file_get_html($result['txtUrl']);
+            foreach($html->find($result['tagCate']) as $cate){
+                $list[$i]['link'] = $cate->href;
+                $list[$i]['title'] = $cate->plaintext;
+                $i++;
+            }
+//            echo '<pre>';
+//            print_r($result);
+//            echo '</pre>';
+            echo '<select id="_cate" class="form-control">';
+            $count = count($list);
+            for($i = 1; $i < $count; $i++){
+                echo '<option value="'.$list[$i]['link'].'">'.$list[$i]['title'].'</option>';
+            }
+            echo '</select>';
+        }
+                        
         public function check_search()
         {
             $result = json_decode($this->input->post('data'), true);                         
@@ -44,9 +65,13 @@
             $page = "";            
             $i = 0;
             $number = $result['numberArticle'];
-                    
-            try{                
-                $website = $this->domparser->file_get_html($result['txtUrl']);
+            try{
+                $parse_url = parse_url($result['txtTagCate']);
+                if(isset($parse_url['host']))
+                        $link = $result['txtTagCate']; //Ghép link
+                    else
+                        $link = $result['txtUrl'].$result['txtTagCate']; //Ghép link
+                $website = $this->domparser->file_get_html($link);
                 foreach($website->find($result['txtTagLink']) as $key)
                 {    
                     if($i >= $number) break;

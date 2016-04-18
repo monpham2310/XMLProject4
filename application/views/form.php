@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="col-lg-12" style="text-align:center">
-                                    <button class="btn btn-primary" onclick="getCate('<?php echo base_url('htmlcontroller/getListCategory'); ?>')">Tìm danh mục</button>
+                                    <button class="btn btn-primary" onclick="getCate('<?php echo base_url('htmlcontroller/getListCate'); ?>')">Tìm danh mục</button>
                                 </div>
                             </div>
                             <div class="col-md-12" style="margin-bottom:10px">
@@ -131,7 +131,7 @@
                             <div class="col-md-12">
                                 <div class="col-md-12" style="text-align:center">
                                     <p>
-                                        <input class="btn btn-success" type="button" value="Thực hiện" onclick="handleClick('<?php echo base_url("htmlcontroller/check_search "); ?>')"/>
+                                        <input class="btn btn-success" type="button" value="Thực hiện" onclick="handleClick('<?php echo base_url("htmlcontroller/check_search"); ?>')"/>
                                     </p>
                                 </div>
                             </div>
@@ -149,3 +149,8 @@
         </div>
     </div>
 </div>
+<script>
+    $('#_cate').change(function(){
+        alert($('#_cate').val());
+    });
+</script>
