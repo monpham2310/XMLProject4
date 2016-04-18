@@ -1,4 +1,4 @@
-function handleClick(controller,kind){
+function handleClick(controller){
     var opts = {
         lines: 12, // The number of lines to draw
         length: 7, // The length of each line
@@ -13,7 +13,7 @@ function handleClick(controller,kind){
     var target = document.getElementById('loading');
     var spinner = new Spinner(opts).spin(target);
     
-    var txtUrl = $('#txtUrl').val();    
+    var txtUrl = $('#selectCate').val();    
     var numberArticle = $('#txtNumberArticle').val();
     var txtTagLink = $('#txtTagLink').val();
     var txtTitle = $('#txtTitle').val();
@@ -96,4 +96,21 @@ function handleClick(controller,kind){
             }
         });
     }
+}
+function getCate(controller){
+    var txtLink = $('#txtLink').val();
+    var txtCate = $('#txtCate').val();
+    var data = { 
+        txtLink: txtLink,
+        tagCate: txtCate      
+    };   
+    var dt = JSON.stringify(data);
+    $.ajax({
+        type: 'POST',
+        url: controller,
+        data: 'data=' + dt,
+        success: function(response){
+            $('#selectCate').append(response);
+        }
+    });
 }

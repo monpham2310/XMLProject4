@@ -1,11 +1,13 @@
 <?php
     class HtmlController extends CI_Controller{
-       
+       var $linkCat;
+        
         public function __construct(){
             parent::__construct();
             $this->load->helper("url");
             $this->load->library('session');
-            $this->load->library("domparser");            
+            $this->load->library("domparser");     
+            $this->linkCat = array();
             set_time_limit(0);
         }
         
@@ -29,6 +31,23 @@
             $this->load->view("index.php",$data);
         }
         
+        public function getListCate(){
+            $result = json_decode($this->input->post('data'), true);  
+            $list = array();
+            $i = 0;
+            $html = $this->domparser->file_get_html($result['txtLink']);
+            foreach($html->find($result['tagCate']) as $cate){
+                $list[$i]['link'] = $cate->href;
+                $list[$i]['title'] = $cate->plaintext;      
+                $i++;
+            }
+            echo '<select class="form-control">';
+            foreach($list as $value){
+                echo '<option value="'.$value['link'].'">'.$value['title'].'</option>';
+            }
+            echo '</select>';
+        }
+                        
         public function check_search()
         {
             $result = json_decode($this->input->post('data'), true);                         
