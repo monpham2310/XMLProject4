@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost:8080/Nhom4/';
+$config['base_url'] = 'http://localhost:9090/XMLProject4/';
 
 //$config['base_url'] = 'http://localhost:9090/XMLProject4/';
 

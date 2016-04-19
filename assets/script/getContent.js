@@ -15,7 +15,6 @@ function handleClick(controller){
     
     var txtUrl = $('#txtUrl').val();
     var txtTagCate = $('#_cate').val();
-    alert(txtTagCate);
     var numberArticle = $('#txtNumberArticle').val();
     var txtTagLink = $('#txtTagLink').val();
     var txtTitle = $('#txtTitle').val();

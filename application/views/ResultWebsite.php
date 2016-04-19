@@ -11,11 +11,6 @@
     </div>
     <div class="col-md-12">
        <?php
-//            <label>Tên bài viết: </label>
-//            <br/>
-//            <label>Link bài viết:</label>
-//            <br/>
-//            <label>Nội dung bài viết được rút gọn:</label>
             
             foreach($result as $value){
                 echo 'Tiêu đề bài viết: <font style="font-weight:bold; color:red">'.$value['title'].'</font><br/>';

@@ -39,9 +39,6 @@
                 $list[$i]['title'] = $cate->plaintext;
                 $i++;
             }
-//            echo '<pre>';
-//            print_r($result);
-//            echo '</pre>';
             echo '<select id="_cate" class="form-control">';
             $count = count($list);
             for($i = 1; $i < $count; $i++){
@@ -55,10 +52,12 @@
             $result = json_decode($this->input->post('data'), true);                         
             $count = 0;            
             $link = "";
+            $linkCate = "";
             $title = "";
             $content = "";
             $datePost = "";
             $parse_url = array();
+            $parse_cate = array();
             $arr = array();
             $item = array();
             $data = array();
@@ -66,12 +65,13 @@
             $i = 0;
             $number = $result['numberArticle'];
             try{
-                $parse_url = parse_url($result['txtTagCate']);
-                if(isset($parse_url['host']))
-                        $link = $result['txtTagCate']; //Ghép link
-                    else
-                        $link = $result['txtUrl'].$result['txtTagCate']; //Ghép link
-                $website = $this->domparser->file_get_html($link);
+                $parse_cate = parse_url($result['txtTagCate']);
+                if(isset($parse_cate['host']))
+                    $linkCate = $result['txtTagCate']; //Ghép link
+                else
+                    $linkCate = $result['txtUrl'].$result['txtTagCate']; //Ghép link
+                
+                $website = $this->domparser->file_get_html($linkCate);
                 foreach($website->find($result['txtTagLink']) as $key)
                 {    
                     if($i >= $number) break;
@@ -97,14 +97,14 @@
                     $item = null;
                     $i++;
                 }
-                
+
                 if($result['sort'] === "asc"){
                     $data['result'] = array_reverse($arr);
                 }
                 else{
                     $data['result'] = $arr;
                 }
-                
+
                 $this->session->set_userdata("content",$data);
                 echo $this->load->view('ResultWebsite.php',$data);
             }
